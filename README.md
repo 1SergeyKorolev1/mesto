@@ -1,6 +1,6 @@
 ---
 # Проект: Место.
-[Ссылка на проект←](https://1sergeykorolev1.github.io/russian-travel/) 
+[Ссылка на проект←](https://1sergeykorolev1.github.io/mesto/) 
 ---
 
 _Проект из учебного курса [Я.Практикум](https://practicum.yandex.ru/) веб-разработка._
