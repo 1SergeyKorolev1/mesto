@@ -3,12 +3,12 @@ let popup = document.querySelector(".popup");
 let popupClose = document.querySelector(".popup__close");
 let formElement = document.querySelector(".popup__submit");
 let popupForma = document.querySelectorAll(".popup__forma");
+let profileTitle = document.querySelector(".profile__title");
+let profileSubtitle = document.querySelector(".profile__subtitle");
 
 function formSubmitHandler(evt) {
   popupForma[0].value;
   popupForma[1].value;
-  let profileTitle = document.querySelector(".profile__title");
-  let profileSubtitle = document.querySelector(".profile__subtitle");
   profileTitle.textContent = popupForma[0].value;
   profileSubtitle.textContent = popupForma[1].value;
   popupForma[0].value = "";
@@ -22,6 +22,8 @@ function open() {
 
 function exit() {
   popup.classList.remove("popup__opened");
+  popupForma[0].value = "";
+  popupForma[1].value = "";
 }
 
 profileEditButton.addEventListener("click", open);
