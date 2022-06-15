@@ -4,97 +4,164 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./images/icon_mesto.png">
-    <meta
-      name="keywords"
-      content="Место, интерактив, фотографии, лайки,"
-    />
+    <link rel="icon" href="./images/icon_mesto.png" />
+    <meta name="keywords" content="Место, интерактив, фотографии, лайки," />
     <meta
       name="description"
       content="Сервис Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки."
     />
     <meta name="author" content="Сергей Королев" />
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css" />
     <title>Место</title>
   </head>
   <body class="body">
-      <header class="header">
-          <img src="./images/logo_mesto_Russia.png" class="header__logo" alt="лого-Место-Россия"></img>
-          <div class="header__line"></div>
-      </header>
-      <main class="content">
-        <section class="profile">
-            <img src="./images/tony.jpg" alt="Энтони Фрэнк Хоук" class="profile__avatar">
-            <div class="profile__info">
-                <div class="profile__wrapper">
-                    <h1 class="profile__title">Энтони Хоук</h1>
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="profile__edit-button">
-                        <path d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z" fill="white"/>
-                        </svg>
-                </div>
-                <p class="profile__subtitle">профессиональный скейтбордист</p>
-            </div>
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="profile__add-button">
-                <path d="M22 9.77778H12.2222V0H9.77778V9.77778H0V12.2222H9.77778V22H12.2222V12.2222H22V9.77778Z" fill="white"/>
-                </svg>
-        </section>
-        <section class="elements">
-            <div class="element">
-                <img src="./images/SMP_Skatepark.jpg" alt="SMP скейт парк" class="element__img">
-                <div class="element__group">
-                    <h2 class="element__title">Китай - SMP скейт парк</h2>
-                    <p class="element__like">&hearts;</p>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/МАКБА.jpg" alt="Знаменитый спот - МАКБА Музей современного искуства в Барселоне" class="element__img">
-                <div class="element__group">
-                    <h2 class="element__title">Испания - МАКБА</h2>
-                    <p class="element__like">&hearts;</p>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/Эль_торо_ступеньки.jpg" alt="Эль Торо - ступеньки. Лейк-Форест — город в округе Ориндж, Калифорния" class="element__img">
-                <div class="element__group">
-                    <h2 class="element__title">Калифорния</h2>
-                    <p class="element__like">&hearts;</p>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/одеса_плаза.jpg" alt="Скейт парк плаза в Одессе в парке Шевченко, Украина " class="element__img">
-                <div class="element__group">
-                    <h2 class="element__title">Одесса - парк Шевченко</h2>
-                    <p class="element__like">&hearts;</p>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/skatepark_stoke_plaza.jpg" alt="Англия - Stoke Plaza, Stoke-On-Trent" class="element__img">
-                <div class="element__group">
-                    <h2 class="element__title">Великобритания</h2>
-                    <p class="element__like">&hearts;</p>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/Япония_скейт-парк.jpg" alt="Amazing Square Skate Park - Этот парк работает круглосуточно" class="element__img">
-                <div class="element__group">
-                    <h2 class="element__title">Япония</h2>
-                    <p class="element__like">&hearts;</p>
-                </div>
-            </div>
-        </section>
-        <section class="popup">
-            <div class="popup__overlay">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <input type="text" class="popup__forma" placeholder="Энтони Фрэнк Хоук" name="firstname">
-                <input type="text" class="popup__forma" placeholder="профессиональный скейтбордист и" name="lastname">
-                <button type="submit" class="popup__submit">Сохранить</button>
-                <a href="#" class="popup__close">&times;</a>
-            </div>
-        </section>
-      </main>
-<footer class="footer">
-    <p class="footer__title">&copy; 2020 Mesto Russia</p>
-</footer>
-<script src="./scripts/index.js"></script>
+    <header class="header">
+      <img
+        src="./images/logo_mesto_Russia.png"
+        class="header__logo"
+        alt="лого-Место-Россия"
+        title="лого-Место"
+      />
+      <div class="header__line"></div>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img
+          src="./images/tony.jpg"
+          alt="Энтони Фрэнк Хоук"
+          class="profile__avatar"
+          title="аватар"
+        />
+        <div class="profile__info">
+          <div class="profile__wrapper">
+            <h1 class="profile__title">Энтони Хоук</h1>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="profile__edit-button"
+            >
+              <path
+                d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <p class="profile__subtitle">профессиональный скейтбордист</p>
+        </div>
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="profile__add-button"
+        >
+          <path
+            d="M22 9.77778H12.2222V0H9.77778V9.77778H0V12.2222H9.77778V22H12.2222V12.2222H22V9.77778Z"
+            fill="white"
+          />
+        </svg>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img
+            src="./images/SMP_Skatepark.jpg"
+            alt="SMP скейт парк"
+            class="element__img"
+            title="SMP скейт парк"
+          />
+          <div class="element__group">
+            <h2 class="element__title">Китай - SMP скейт парк</h2>
+            <p class="element__like">&hearts;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img
+            src="./images/МАКБА.jpg"
+            alt="МАКБА Музей современного искуства в Барселоне"
+            class="element__img"
+            title="Знаменитый спот"
+          />
+          <div class="element__group">
+            <h2 class="element__title">Испания - МАКБА</h2>
+            <p class="element__like">&hearts;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img
+            src="./images/Эль_торо_ступеньки.jpg"
+            alt="Эль Торо - ступеньки. Лейк-Форест — город в округе Ориндж, Калифорния"
+            class="element__img"
+            title="Легендарный спот"
+          />
+          <div class="element__group">
+            <h2 class="element__title">Калифорния</h2>
+            <p class="element__like">&hearts;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img
+            src="./images/одеса_плаза.jpg"
+            alt="Скейт парк плаза в Одессе в парке Шевченко, Украина "
+            class="element__img"
+            title="парк Шевченко"
+          />
+          <div class="element__group">
+            <h2 class="element__title">Одесса - парк Шевченко</h2>
+            <p class="element__like">&hearts;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img
+            src="./images/skatepark_stoke_plaza.jpg"
+            alt="Англия - Stoke Plaza, Stoke-On-Trent"
+            class="element__img"
+            title="Stoke-On-Trent"
+          />
+          <div class="element__group">
+            <h2 class="element__title">Великобритания</h2>
+            <p class="element__like">&hearts;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img
+            src="./images/Япония_скейт-парк.jpg"
+            alt="Amazing Square Skate Park - Этот парк работает круглосуточно"
+            class="element__img"
+            title="И даже ночью"
+          />
+          <div class="element__group">
+            <h2 class="element__title">Япония</h2>
+            <p class="element__like">&hearts;</p>
+          </div>
+        </div>
+      </section>
+      <section class="popup">
+        <div class="popup__overlay">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input
+            type="text"
+            class="popup__forma"
+            placeholder="Энтони Фрэнк Хоук"
+            name="firstname"
+          />
+          <input
+            type="text"
+            class="popup__forma"
+            placeholder="профессиональный скейтбордист и"
+            name="lastname"
+          />
+          <button type="submit" class="popup__submit">Сохранить</button>
+          <a href="#" class="popup__close">&times;</a>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__title">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
