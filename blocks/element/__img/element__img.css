@@ -1,0 +1,6 @@
+.element__img {
+  width: 100%;
+  max-width: 282px;
+  height: 79%;
+  object-fit: cover;
+}
