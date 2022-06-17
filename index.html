@@ -61,7 +61,7 @@
           />
           <div class="element__group">
             <h2 class="element__title">Китай - SMP скейт парк</h2>
-            <p class="element__like">&hearts;</p>
+            <button class="element__like"></button>
           </div>
         </div>
         <div class="element">
@@ -73,7 +73,7 @@
           />
           <div class="element__group">
             <h2 class="element__title">Испания - МАКБА</h2>
-            <p class="element__like">&hearts;</p>
+            <button class="element__like"></button>
           </div>
         </div>
         <div class="element">
@@ -85,7 +85,7 @@
           />
           <div class="element__group">
             <h2 class="element__title">Калифорния</h2>
-            <p class="element__like">&hearts;</p>
+            <button class="element__like"></button>
           </div>
         </div>
         <div class="element">
@@ -97,7 +97,7 @@
           />
           <div class="element__group">
             <h2 class="element__title">Одесса - парк Шевченко</h2>
-            <p class="element__like">&hearts;</p>
+            <button class="element__like"></button>
           </div>
         </div>
         <div class="element">
@@ -109,7 +109,7 @@
           />
           <div class="element__group">
             <h2 class="element__title">Великобритания</h2>
-            <p class="element__like">&hearts;</p>
+            <button class="element__like"></button>
           </div>
         </div>
         <div class="element">
@@ -121,29 +121,21 @@
           />
           <div class="element__group">
             <h2 class="element__title">Япония</h2>
-            <p class="element__like">&hearts;</p>
+            <button class="element__like"></button>
           </div>
         </div>
       </section>
-      <section class="popup">
+      <div class="popup">
         <div class="popup__overlay">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input
-            type="text"
-            class="popup__forma"
-            placeholder="Энтони Фрэнк Хоук"
-            name="firstname"
-          />
-          <input
-            type="text"
-            class="popup__forma"
-            placeholder="профессиональный скейтбордист и"
-            name="lastname"
-          />
-          <button type="submit" class="popup__submit">Сохранить</button>
-          <a href="#" class="popup__close">&times;</a>
+          <form name="forms" class="popup__forma">
+            <input type="text" class="popup__nameinput" name="firstname" />
+            <input type="text" class="popup__jobinput" name="lastname" />
+            <button type="submit" class="popup__submit">Сохранить</button>
+          </form>
+          <button class="popup__close"></button>
         </div>
-      </section>
+      </div>
     </main>
     <footer class="footer">
       <p class="footer__title">&copy; 2020 Mesto Russia</p>

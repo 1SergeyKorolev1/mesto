@@ -9,10 +9,14 @@
   color: #fff;
   border-radius: 2px;
   background-color: #000000;
+  transition: all 0.2s ease;
 }
 @media screen and (max-width: 544px) {
   .popup__submit {
     min-width: 238px;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 45px auto 25px;
   }
 }
 .popup__submit:hover {

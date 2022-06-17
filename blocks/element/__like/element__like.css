@@ -1,8 +1,13 @@
 .element__like {
-  color: #fff;
+  background-color: #fff;
+  background-image: url(../../../images/like.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: 22px;
+  min-height: 19px;
   margin: auto 0;
   font-size: 19px;
-  text-shadow: 0 0 3px #000;
+  border: none;
 }
 .element__like:hover {
   opacity: 0.5;
