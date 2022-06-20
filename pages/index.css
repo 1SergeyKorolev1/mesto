@@ -26,7 +26,7 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);
 /* __ */
-@import url(../blocks/popup/view-input/view-input.css);
+@import url(../blocks/view-input/view-input.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__overlay/popup__overlay.css);
 @import url(../blocks/popup/__title/popup__title.css);
