@@ -4,3 +4,12 @@
   height: 79%;
   object-fit: cover;
 }
+@media screen and (max-width: 840px) {
+  .element__img {
+    max-width: 100%;
+  }
+}
+.element__img:hover {
+  opacity: 0.99;
+  cursor: pointer;
+}

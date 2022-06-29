@@ -42,78 +42,16 @@
         <button type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
-        <div class="element">
-          <img
-            src="./images/SMP_Skatepark.jpg"
-            alt="SMP скейт парк"
-            class="element__img"
-            title="SMP скейт парк"
-          />
-          <div class="element__group">
-            <h2 class="element__title">Китай - SMP скейт парк</h2>
-            <button type="button" class="element__like"></button>
+        <template class="elementTemplate">
+          <div class="element">
+            <img class="element__img" />
+            <button type="button" class="element__basket"></button>
+            <div class="element__group">
+              <h2 class="element__title"></h2>
+              <button type="button" class="element__like"></button>
+            </div>
           </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/МАКБА.jpg"
-            alt="МАКБА Музей современного искуства в Барселоне"
-            class="element__img"
-            title="Знаменитый спот"
-          />
-          <div class="element__group">
-            <h2 class="element__title">Испания - МАКБА</h2>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/Эль_торо_ступеньки.jpg"
-            alt="Эль Торо - ступеньки. Лейк-Форест — город в округе Ориндж, Калифорния"
-            class="element__img"
-            title="Легендарный спот"
-          />
-          <div class="element__group">
-            <h2 class="element__title">Калифорния</h2>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/одеса_плаза.jpg"
-            alt="Скейт парк плаза в Одессе в парке Шевченко, Украина "
-            class="element__img"
-            title="парк Шевченко"
-          />
-          <div class="element__group">
-            <h2 class="element__title">Одесса - парк Шевченко</h2>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/skatepark_stoke_plaza.jpg"
-            alt="Англия - Stoke Plaza, Stoke-On-Trent"
-            class="element__img"
-            title="Stoke-On-Trent"
-          />
-          <div class="element__group">
-            <h2 class="element__title">Великобритания</h2>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/Япония_скейт-парк.jpg"
-            alt="Amazing Square Skate Park - Этот парк работает круглосуточно"
-            class="element__img"
-            title="И даже ночью"
-          />
-          <div class="element__group">
-            <h2 class="element__title">Япония</h2>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
+        </template>
       </section>
       <div class="popup">
         <div class="popup__overlay">
@@ -123,15 +61,28 @@
               type="text"
               class="popup__nameinput view-input"
               name="firstname"
+              placeholder="Название"
             />
             <input
               type="text"
               class="popup__jobinput view-input"
               name="lastname"
+              placeholder="Ссылка на картинку"
             />
             <button type="submit" class="popup__submit">Сохранить</button>
           </form>
           <button type="button" class="popup__close"></button>
+        </div>
+      </div>
+      <div class="popupImaje">
+        <div class="popupImaje__overlay">
+          <img
+            src="#"
+            alt="увеличенное изображение"
+            class="popupImaje__increased"
+          />
+          <p class="popupImaje__caption"></p>
+          <button type="button" class="popupImaje__close"></button>
         </div>
       </div>
     </main>
