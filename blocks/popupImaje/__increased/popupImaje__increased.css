@@ -1,5 +1,5 @@
 .popupImaje__increased {
   width: 75vw;
-  height: 75vh;
-  object-fit: cover;
+  max-height: 75vh;
+  object-fit: contain;
 }
