@@ -1,131 +1,112 @@
-let profileEditButton = document.querySelector(".profile__edit-button");
-let popup = document.querySelector(".popup");
-let popupClose = document.querySelector(".popup__close");
-let formElement = document.querySelector(".popup__form");
-let profileTitle = document.querySelector(".profile__title");
-let profileSubtitle = document.querySelector(".profile__subtitle");
-let popupNameInput = document.querySelector(".popup__nameinput");
-let popupJobInput = document.querySelector(".popup__jobinput");
+const profileEditButton = document.querySelector(".profile__edit-button");
+const popup = document.querySelector(".popup");
+const popupClose = document.querySelector(".popup__close");
+const popupForm = document.querySelector(".popup__form");
+const proficonstitle = document.querySelector(".profile__title");
+const profileSubtitle = document.querySelector(".profile__subtitle");
+const popupNameInput = document.querySelector(".popup__nameinput");
+const popupJobInput = document.querySelector(".popup__jobinput");
 const profileAddButton = document.querySelector(".profile__add-button");
 const popupTitle = document.querySelector(".popup__title");
-const popupSubbmit = document.querySelector(".popup__submit");
 const elements = document.querySelector(".elements");
 const elementCard = document.querySelector(".elementTemplate").content;
-const popupImaje = document.querySelector(".popupImaje");
-const popupImajeClose = document.querySelector(".popupImaje__close");
-const popupImajeIncreased = document.querySelector(".popupImaje__increased");
-const popupImajeCaption = document.querySelector(".popupImaje__caption");
+const popupPopupImage = document.querySelector(".popup_popup_imaje");
+const popupCloseImage = document.querySelector(".popup__close_image");
+const popupCloseMesto = document.querySelector(".popup__close_mesto");
+const popupIncreased = document.querySelector(".popup__increased");
+const popupCaption = document.querySelector(".popup__caption");
+const popupPopupMesto = document.querySelector(".popup_popup_mesto");
+const popupNameinputMesto = document.querySelector(".popup__nameinput_mesto");
+const popupJobinputMesto = document.querySelector(".popup__jobinput_mesto");
+const popupFormMesto = document.querySelector(".popup__form_mesto");
 
-const elementMassif = [
-  {
-    name: "Китай - SMP скейт парк",
-    link: "https://spotmap.ru/uploads/image/image/4078/Convic_Shanghai.jpg",
-  },
-  {
-    name: "Испания - МАКБА",
-    link: "https://barcelonatm.ru/wp-content/uploads/2017/02/Muzej-sovremennogo-iskusstva-v-Barselone.jpg",
-  },
-  {
-    name: "Калифорния, Эль Торо - ступеньки. Лейк-Форест — город в округе Ориндж, Калифорния",
-    link: "https://spotmap.ru/uploads/image/image/18675/maxresdefault__1_.jpg",
-  },
-  {
-    name: "Одесса - парк Шевченко.",
-    link: "https://live.staticflickr.com/7801/39952324473_e4a2b5e351_b.jpg",
-  },
-  {
-    name: "Великобритания - Англия - Stoke Plaza, Stoke-On-Trent",
-    link: "https://www.webbaviation.co.uk/aerial/_data/i/galleries/Staffordshire/Stoke-on-Trent/skatepark_db55345-me.jpg",
-  },
-  {
-    name: "Япония. Amazing Square Skate Park - Этот парк работает круглосуточно",
-    link: "https://samokatplus.ru/upload/medialibrary/079/0792ac9f40e20a201277d282fff0e4cc.jpg",
-  },
-];
-
-elementMassif.forEach(function (element) {
+elementsCardsMassif.forEach(function (element) {
   const cardsList = elementCard.cloneNode(true);
 
   cardsList.querySelector(".element__img").src = element.link;
   cardsList.querySelector(".element__title").textContent = element.name;
+  createPartCards(cardsList);
   cardsList
+    .querySelector(".element__img")
+    .addEventListener("click", function (evt) {
+      addPopupOpened(popupPopupImage);
+      popupIncreased.src = element.link;
+      popupCaption.textContent = element.name;
+    });
+  elements.prepend(cardsList);
+});
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  proficonstitle.textContent = popupNameInput.value;
+  profileSubtitle.textContent = popupJobInput.value;
+  removePopupOpened(popup);
+}
+
+function handleMestoFormSubmit(evt) {
+  if (popupJobinputMesto.value == "" || popupNameinputMesto.value === "") {
+    alert("не оставляйте поля пустыми!");
+  } else {
+    evt.preventDefault();
+    const cardAdd = elementCard.cloneNode(true);
+    cardAdd.querySelector(".element__img").src = popupJobinputMesto.value;
+    cardAdd.querySelector(".element__title").textContent =
+      popupNameinputMesto.value;
+    createPartCards(cardAdd);
+    cardAdd
+      .querySelector(".element__img")
+      .addEventListener("click", function (evt) {
+        addPopupOpened(popupPopupImage);
+        popupIncreased.src = popupJobinputMesto.value;
+        popupCaption.textContent = popupNameinputMesto.value;
+      });
+    elements.prepend(cardAdd);
+    removePopupOpened(popupPopupMesto);
+  }
+}
+
+function createPartCards(partCards) {
+  partCards
     .querySelector(".element__like")
     .addEventListener("click", function (evt) {
       evt.target.classList.toggle("element__like_active");
     });
-  cardsList
+  partCards
     .querySelector(".element__basket")
     .addEventListener("click", function (evt) {
       const basketKlick = evt.target;
-      const basketDelete = basketKlick.closest(".element");
-      basketDelete.remove();
+      const basketDeconste = basketKlick.closest(".element");
+      basketDeconste.remove();
     });
-  cardsList
-    .querySelector(".element__img")
-    .addEventListener("click", function (evt) {
-      popupImaje.classList.add("popup_opened");
-      popupImajeIncreased.src = element.link;
-      popupImajeCaption.textContent = element.name;
-    });
-  elements.append(cardsList);
-});
-
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-  if (popupTitle.textContent === "Редактировать профиль") {
-    profileTitle.textContent = popupNameInput.value;
-    profileSubtitle.textContent = popupJobInput.value;
-    popup.classList.remove("popup_opened");
-  } else {
-    const cardAdd = elementCard.cloneNode(true);
-    cardAdd.querySelector(".element__img").src = popupJobInput.value;
-    cardAdd.querySelector(".element__title").textContent = popupNameInput.value;
-    cardAdd
-      .querySelector(".element__like")
-      .addEventListener("click", function (evt) {
-        evt.target.classList.toggle("element__like_active");
-      });
-    cardAdd
-      .querySelector(".element__basket")
-      .addEventListener("click", function (evt) {
-        const basketKlick = evt.target;
-        const basketDelete = basketKlick.closest(".element");
-        basketDelete.remove();
-      });
-    cardAdd
-      .querySelector(".element__img")
-      .addEventListener("click", function (evt) {
-        popupImaje.classList.add("popup_opened");
-        popupImajeIncreased.src = popupJobInput.value;
-        popupImajeCaption.textContent = popupNameInput.value;
-      });
-    elements.append(cardAdd);
-    popup.classList.remove("popup_opened");
-  }
 }
 
+function removePopupOpened(removePopup) {
+  removePopup.classList.remove("popup_opened");
+}
+function addPopupOpened(addPopup) {
+  addPopup.classList.add("popup_opened");
+}
 function open() {
-  popupTitle.textContent = "Редактировать профиль";
-  popupNameInput.value = profileTitle.textContent;
+  popupNameInput.value = proficonstitle.textContent;
   popupJobInput.value = profileSubtitle.textContent;
-  popupSubbmit.textContent = "Сохранить";
-  popup.classList.add("popup_opened");
+  addPopupOpened(popup);
 }
 function openAdd() {
-  popupTitle.textContent = "Новое место";
-  popupNameInput.value = "";
-  popupJobInput.value = "";
-  popupSubbmit.textContent = "Создать";
-  popup.classList.add("popup_opened");
+  popupNameinputMesto.value = "";
+  popupJobinputMesto.value = "";
+  addPopupOpened(popupPopupMesto);
 }
 
 function exit() {
-  popup.classList.remove("popup_opened");
-  popupImaje.classList.remove("popup_opened");
+  removePopupOpened(popup);
+  removePopupOpened(popupPopupImage);
+  removePopupOpened(popupPopupMesto);
 }
 
 profileEditButton.addEventListener("click", open);
 profileAddButton.addEventListener("click", openAdd);
 popupClose.addEventListener("click", exit);
-popupImajeClose.addEventListener("click", exit);
-formElement.addEventListener("submit", formSubmitHandler);
+popupCloseImage.addEventListener("click", exit);
+popupCloseMesto.addEventListener("click", exit);
+popupFormMesto.addEventListener("submit", handleMestoFormSubmit);
+popupForm.addEventListener("submit", handleProfileFormSubmit);

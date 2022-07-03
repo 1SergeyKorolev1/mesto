@@ -61,34 +61,56 @@
               type="text"
               class="popup__nameinput view-input"
               name="firstname"
-              placeholder="Название"
             />
             <input
               type="text"
               class="popup__jobinput view-input"
               name="lastname"
-              placeholder="Ссылка на картинку"
             />
             <button type="submit" class="popup__submit">Сохранить</button>
           </form>
           <button type="button" class="popup__close"></button>
         </div>
       </div>
-      <div class="popupImaje">
-        <div class="popupImaje__overlay">
-          <img
-            src="#"
-            alt="увеличенное изображение"
-            class="popupImaje__increased"
-          />
-          <p class="popupImaje__caption"></p>
-          <button type="button" class="popupImaje__close"></button>
+      <div class="popup popup_popup_imaje">
+        <div class="popup__overlay popup__overlay_image">
+          <img src="#" alt="увеличенное изображение" class="popup__increased" />
+          <p class="popup__caption"></p>
+          <button
+            type="button"
+            class="popup__close popup__close_image"
+          ></button>
+        </div>
+      </div>
+      <div class="popup popup_popup_mesto">
+        <div class="popup__overlay">
+          <h2 class="popup__title">Новое место</h2>
+          <form name="forms" class="popup__form popup__form_mesto">
+            <input
+              type="text"
+              class="popup__nameinput popup__nameinput_mesto view-input"
+              name="firstname"
+              placeholder="Название"
+            />
+            <input
+              type="text"
+              class="popup__jobinput popup__jobinput_mesto view-input"
+              name="lastname"
+              placeholder="Ссылка на картинку"
+            />
+            <button type="submit" class="popup__submit">Создать</button>
+          </form>
+          <button
+            type="button"
+            class="popup__close popup__close_mesto"
+          ></button>
         </div>
       </div>
     </main>
     <footer class="footer">
       <p class="footer__title">&copy; 2020 Mesto Russia</p>
     </footer>
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
