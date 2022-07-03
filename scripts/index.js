@@ -8,7 +8,7 @@ const popupNameInput = document.querySelector(".popup__nameinput");
 const popupJobInput = document.querySelector(".popup__jobinput");
 const profileAddButton = document.querySelector(".profile__add-button");
 const popupTitle = document.querySelector(".popup__title");
-const elements = document.querySelector(".elements");
+const element = document.querySelector(".elements");
 const elementCard = document.querySelector(".elementTemplate").content;
 const popupPopupImage = document.querySelector(".popup_popup_imaje");
 const popupCloseImage = document.querySelector(".popup__close_image");
@@ -21,19 +21,7 @@ const popupJobinputMesto = document.querySelector(".popup__jobinput_mesto");
 const popupFormMesto = document.querySelector(".popup__form_mesto");
 
 elementsCardsMassif.forEach(function (element) {
-  const cardsList = elementCard.cloneNode(true);
-
-  cardsList.querySelector(".element__img").src = element.link;
-  cardsList.querySelector(".element__title").textContent = element.name;
-  createPartCards(cardsList);
-  cardsList
-    .querySelector(".element__img")
-    .addEventListener("click", function (evt) {
-      addPopupOpened(popupPopupImage);
-      popupIncreased.src = element.link;
-      popupCaption.textContent = element.name;
-    });
-  elements.prepend(cardsList);
+  addNameCard(element.name, element.link);
 });
 
 function handleProfileFormSubmit(evt) {
@@ -48,24 +36,30 @@ function handleMestoFormSubmit(evt) {
     alert("не оставляйте поля пустыми!");
   } else {
     evt.preventDefault();
-    const cardAdd = elementCard.cloneNode(true);
-    cardAdd.querySelector(".element__img").src = popupJobinputMesto.value;
-    cardAdd.querySelector(".element__title").textContent =
-      popupNameinputMesto.value;
-    createPartCards(cardAdd);
-    cardAdd
-      .querySelector(".element__img")
-      .addEventListener("click", function (evt) {
-        addPopupOpened(popupPopupImage);
-        popupIncreased.src = popupJobinputMesto.value;
-        popupCaption.textContent = popupNameinputMesto.value;
-      });
-    elements.prepend(cardAdd);
+    addNameCard(popupNameinputMesto.value, popupJobinputMesto.value);
     removePopupOpened(popupPopupMesto);
   }
 }
 
-function createPartCards(partCards) {
+function addNameCard(nameCard, linkNameCard) {
+  const cardsList = elementCard.cloneNode(true);
+
+  cardsList.querySelector(".element__img").src = linkNameCard;
+  cardsList.querySelector(".element__img").alt = nameCard;
+  cardsList.querySelector(".element__title").textContent = nameCard;
+  addEventListenersCard(cardsList);
+  cardsList
+    .querySelector(".element__img")
+    .addEventListener("click", function (evt) {
+      addPopupOpened(popupPopupImage);
+      popupIncreased.src = linkNameCard;
+      popupIncreased.alt = nameCard;
+      popupCaption.textContent = nameCard;
+    });
+  element.prepend(cardsList);
+}
+
+function addEventListenersCard(partCards) {
   partCards
     .querySelector(".element__like")
     .addEventListener("click", function (evt) {
@@ -86,7 +80,7 @@ function removePopupOpened(removePopup) {
 function addPopupOpened(addPopup) {
   addPopup.classList.add("popup_opened");
 }
-function open() {
+function openPopupProfile() {
   popupNameInput.value = proficonstitle.textContent;
   popupJobInput.value = profileSubtitle.textContent;
   addPopupOpened(popup);
@@ -97,16 +91,21 @@ function openAdd() {
   addPopupOpened(popupPopupMesto);
 }
 
-function exit() {
+function exitPopup() {
   removePopupOpened(popup);
+}
+function exitPopupImaje() {
   removePopupOpened(popupPopupImage);
+}
+function exitPopupMesto() {
   removePopupOpened(popupPopupMesto);
 }
-
-profileEditButton.addEventListener("click", open);
+profileEditButton.addEventListener("click", openPopupProfile);
 profileAddButton.addEventListener("click", openAdd);
-popupClose.addEventListener("click", exit);
-popupCloseImage.addEventListener("click", exit);
-popupCloseMesto.addEventListener("click", exit);
+
+popupClose.addEventListener("click", exitPopup);
+popupCloseImage.addEventListener("click", exitPopupImaje);
+popupCloseMesto.addEventListener("click", exitPopupMesto);
+
 popupFormMesto.addEventListener("submit", handleMestoFormSubmit);
 popupForm.addEventListener("submit", handleProfileFormSubmit);
