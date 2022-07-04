@@ -1,5 +1,5 @@
 const profileEditButton = document.querySelector(".profile__edit-button");
-const popup = document.querySelector(".popup");
+const popupProfileEdit = document.querySelector(".popup_popup_profile");
 const popupClose = document.querySelector(".popup__close");
 const popupForm = document.querySelector(".popup__form");
 const proficonstitle = document.querySelector(".profile__title");
@@ -8,7 +8,7 @@ const popupNameInput = document.querySelector(".popup__nameinput");
 const popupJobInput = document.querySelector(".popup__jobinput");
 const profileAddButton = document.querySelector(".profile__add-button");
 const popupTitle = document.querySelector(".popup__title");
-const element = document.querySelector(".elements");
+const elementsContainer = document.querySelector(".elements");
 const elementCard = document.querySelector(".elementTemplate").content;
 const popupPopupImage = document.querySelector(".popup_popup_imaje");
 const popupCloseImage = document.querySelector(".popup__close_image");
@@ -21,14 +21,14 @@ const popupJobinputMesto = document.querySelector(".popup__jobinput_mesto");
 const popupFormMesto = document.querySelector(".popup__form_mesto");
 
 elementsCardsMassif.forEach(function (element) {
-  addNameCard(element.name, element.link);
+  renderCard(element.name, element.link);
 });
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   proficonstitle.textContent = popupNameInput.value;
   profileSubtitle.textContent = popupJobInput.value;
-  removePopupOpened(popup);
+  removePopupOpened(popupProfileEdit);
 }
 
 function handleMestoFormSubmit(evt) {
@@ -36,14 +36,17 @@ function handleMestoFormSubmit(evt) {
     alert("не оставляйте поля пустыми!");
   } else {
     evt.preventDefault();
-    addNameCard(popupNameinputMesto.value, popupJobinputMesto.value);
+    renderCard(popupNameinputMesto.value, popupJobinputMesto.value);
     removePopupOpened(popupPopupMesto);
   }
 }
 
+function renderCard(nameCard, linkNameCard) {
+  elementsContainer.prepend(addNameCard(nameCard, linkNameCard));
+}
+
 function addNameCard(nameCard, linkNameCard) {
   const cardsList = elementCard.cloneNode(true);
-
   cardsList.querySelector(".element__img").src = linkNameCard;
   cardsList.querySelector(".element__img").alt = nameCard;
   cardsList.querySelector(".element__title").textContent = nameCard;
@@ -56,7 +59,7 @@ function addNameCard(nameCard, linkNameCard) {
       popupIncreased.alt = nameCard;
       popupCaption.textContent = nameCard;
     });
-  element.prepend(cardsList);
+  return cardsList;
 }
 
 function addEventListenersCard(partCards) {
@@ -83,7 +86,7 @@ function addPopupOpened(addPopup) {
 function openPopupProfile() {
   popupNameInput.value = proficonstitle.textContent;
   popupJobInput.value = profileSubtitle.textContent;
-  addPopupOpened(popup);
+  addPopupOpened(popupProfileEdit);
 }
 function openAdd() {
   popupNameinputMesto.value = "";
@@ -92,7 +95,7 @@ function openAdd() {
 }
 
 function exitPopup() {
-  removePopupOpened(popup);
+  removePopupOpened(popupProfileEdit);
 }
 function exitPopupImaje() {
   removePopupOpened(popupPopupImage);
