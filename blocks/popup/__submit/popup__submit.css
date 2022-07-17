@@ -1,5 +1,5 @@
 .popup__submit {
-  margin: 48px auto 37px;
+  margin: 12px auto 37px;
   min-width: 358px;
   min-height: 50px;
   font-style: normal;
@@ -18,7 +18,7 @@
     min-width: 238px;
     font-size: 14px;
     line-height: 17px;
-    margin: 45px auto 25px;
+    margin: 12px auto 25px;
   }
 }
 .popup__submit:hover {

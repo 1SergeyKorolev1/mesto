@@ -19,6 +19,7 @@ const popupPopupMesto = document.querySelector(".popup_popup_mesto");
 const popupNameinputMesto = document.querySelector(".popup__nameinput_mesto");
 const popupJobinputMesto = document.querySelector(".popup__jobinput_mesto");
 const popupFormMesto = document.querySelector(".popup__form_mesto");
+const popupOpened = document.querySelector(".popup__opened");
 
 elementsCardsMassif.forEach(function (element) {
   renderCard(element.name, element.link);
@@ -32,13 +33,9 @@ function handleProfileFormSubmit(evt) {
 }
 
 function handleMestoFormSubmit(evt) {
-  if (popupJobinputMesto.value == "" || popupNameinputMesto.value === "") {
-    alert("не оставляйте поля пустыми!");
-  } else {
-    evt.preventDefault();
-    renderCard(popupNameinputMesto.value, popupJobinputMesto.value);
-    removePopupOpened(popupPopupMesto);
-  }
+  evt.preventDefault();
+  renderCard(popupNameinputMesto.value, popupJobinputMesto.value);
+  removePopupOpened(popupPopupMesto);
 }
 
 function renderCard(nameCard, linkNameCard) {
@@ -82,16 +79,25 @@ function removePopupOpened(removePopup) {
 }
 function addPopupOpened(addPopup) {
   addPopup.classList.add("popup_opened");
+  closeViaOverlayOrEscape(addPopup);
 }
 function openPopupProfile() {
+  deliteError(popupNameInput);
   popupNameInput.value = proficonstitle.textContent;
   popupJobInput.value = profileSubtitle.textContent;
   addPopupOpened(popupProfileEdit);
 }
 function openAdd() {
+  deliteError(popupNameinputMesto);
   popupNameinputMesto.value = "";
   popupJobinputMesto.value = "";
   addPopupOpened(popupPopupMesto);
+}
+
+function deliteError(error) {
+  const errorElement = error.parentNode.querySelectorAll(".popup__error");
+  errorElement[0].textContent = "";
+  errorElement[1].textContent = "";
 }
 
 function exitPopup() {
@@ -112,3 +118,16 @@ popupCloseMesto.addEventListener("click", exitPopupMesto);
 
 popupFormMesto.addEventListener("submit", handleMestoFormSubmit);
 popupForm.addEventListener("submit", handleProfileFormSubmit);
+
+function closeViaOverlayOrEscape(close) {
+  close.addEventListener("click", function (evt) {
+    if (evt.target === evt.currentTarget) {
+      removePopupOpened(close);
+    }
+  });
+  document.addEventListener("keydown", function (evt) {
+    if (evt.key === "Escape") {
+      removePopupOpened(close);
+    }
+  });
+}
