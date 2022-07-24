@@ -82,6 +82,7 @@ function addEventListenersCard(partCards) {
 
 function removePopupOpened(removePopup) {
   removePopup.classList.remove("popup_opened");
+  removeClickAndKeydownEvent(removePopup);
 }
 function addPopupOpened(addPopup) {
   addPopup.classList.add("popup_opened");
@@ -89,26 +90,26 @@ function addPopupOpened(addPopup) {
 }
 function openPopupProfile() {
   const form = document.forms.form1;
-  deliteInput(form);
+  deliteErrorsInput(form);
   popupNameInput.value = profileTitle.textContent;
   popupJobInput.value = profileSubtitle.textContent;
   addPopupOpened(popupProfileEdit);
 }
 function openAdd() {
   const form = document.forms.form2;
-  deliteInput(form);
+  deliteErrorsInput(form);
   form.reset();
   addPopupOpened(popupPopupMesto);
 }
 
-function deliteInput(formElement) {
+function deliteErrorsInput(formElement) {
   const errorElements = formElement.querySelectorAll(".popup__error");
+  const input = formElement.querySelectorAll("input");
   errorElements.forEach(function (error) {
-    if (formElement === document.forms.form1) {
-      error.textContent = "";
-    } else {
-      error.textContent = "Заполните это поле.";
-    }
+    error.textContent = "";
+  });
+  input.forEach(function (input) {
+    input.style.borderBottom = "1px solid #0000002f";
   });
 }
 
@@ -118,31 +119,31 @@ profileAddButton.addEventListener("click", openAdd);
 popupFormMesto.addEventListener("submit", handleMestoFormSubmit);
 popupFormProfile.addEventListener("submit", handleProfileFormSubmit);
 
-function closeViaOverlayOrEscape(formElement) {
-  const closeButton = formElement.querySelector(".popup__close");
-  function addClickEvent(evt) {
-    if (evt.target === evt.currentTarget) {
-      removePopupOpened(formElement);
-      RemoveClickAndKeydownEvent(formElement);
-    }
+function closeViaOverlayOrEscape(popup) {
+  document.addEventListener("keydown", closePopupOnEsc);
+  popup.addEventListener("click", addCloseClickEvent);
+}
+
+function addCloseClickEvent(evt) {
+  const popup = evt.currentTarget;
+  if (
+    evt.target === popup ||
+    evt.target === popup.querySelector(".popup__close")
+  ) {
+    removePopupOpened(popup);
   }
-  function addKeydownEvent(evt) {
-    const escapeEvent = evt.key;
-    if (escapeEvent === "Escape") {
-      removePopupOpened(formElement);
-      RemoveClickAndKeydownEvent(formElement);
-    }
+}
+function closePopupOnEsc(evt) {
+  const escapeEvent = evt.key;
+  if (escapeEvent === "Escape") {
+    const popup = document.querySelectorAll(".popup");
+    popup.forEach(function (popup) {
+      removePopupOpened(popup);
+    });
   }
-  function exitPopup() {
-    removePopupOpened(formElement);
-    RemoveClickAndKeydownEvent(formElement);
-  }
-  function RemoveClickAndKeydownEvent(formElement) {
-    formElement.removeEventListener("click", addClickEvent);
-    document.removeEventListener("keydown", addKeydownEvent);
-    closeButton.addEventListener("click", exitPopup);
-  }
-  document.addEventListener("keydown", addKeydownEvent);
-  formElement.addEventListener("click", addClickEvent);
-  closeButton.addEventListener("click", exitPopup);
+}
+
+function removeClickAndKeydownEvent(popup) {
+  popup.removeEventListener("click", addCloseClickEvent);
+  document.removeEventListener("keydown", closePopupOnEsc);
 }
