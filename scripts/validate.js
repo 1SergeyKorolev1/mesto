@@ -1,11 +1,11 @@
 const setEventListeners = (formElement, setings) => {
-  validateForm(formElement);
+  validateForm(formElement, setings);
   const inputList = Array.from(
     formElement.querySelectorAll(setings.inputSelector)
   );
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
-      hendlerInputForm(formElement, inputElement);
+      hendlerInputForm(formElement, inputElement, setings);
     });
   });
 };
@@ -21,32 +21,32 @@ enableValidation({
   formSelector: ".popup__form",
   inputSelector: "input",
   submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: ".popup__submit_invalid",
-  errorClass: ".popup__error",
+  inactiveButtonClass: "popup__submit_invalid",
+  errorClass: "view-input_invalidate",
 });
 
-function hendlerInputForm(formElement, inputElement) {
-  validateForm(formElement);
-  validateInput(inputElement);
+function hendlerInputForm(formElement, inputElement, setings) {
+  validateForm(formElement, setings);
+  validateInput(inputElement, setings);
 }
 
-function validateForm(form) {
-  const submitButton = form.querySelector(".popup__submit");
-  if (form.checkValidity()) {
+function validateForm(formElement, setings) {
+  const submitButton = formElement.querySelector(setings.submitButtonSelector);
+  if (formElement.checkValidity()) {
     submitButton.removeAttribute("disabled", true);
-    submitButton.classList.remove("popup__submit_invalid");
+    submitButton.classList.remove(setings.inactiveButtonClass);
   } else {
     submitButton.setAttribute("disabled", true);
-    submitButton.classList.add("popup__submit_invalid");
+    submitButton.classList.add(setings.inactiveButtonClass);
   }
 }
 
-function validateInput(input) {
+function validateInput(input, setings) {
   const errorElement = input.parentNode.querySelector(`#${input.id}-error`);
   if (input.checkValidity()) {
-    input.style.borderBottom = "1px solid #0000002f";
+    input.classList.remove(setings.errorClass);
   } else {
-    input.style.borderBottom = "1px solid red";
+    input.classList.add(setings.errorClass);
   }
   errorElement.textContent = input.validationMessage;
 }

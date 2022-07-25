@@ -54,5 +54,6 @@
 @import url(../blocks/popup/__nameinput/popup__nameinput.css);
 @import url(../blocks/popup/__jobinput/popup__jobinput.css);
 /* __ */
+@import url(../blocks/view-input/_invalidate/view-input_invalidate.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__submit/_invalid/popup__submit_invalid.css);

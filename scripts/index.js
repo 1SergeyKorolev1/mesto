@@ -1,3 +1,5 @@
+// form1
+// form2
 const profileEditButton = document.querySelector(".profile__edit-button");
 const popupProfileEdit = document.querySelector(".popup_popup_profile");
 const popupCloseProfile = document.querySelector(".popup__close_profile");
@@ -89,27 +91,27 @@ function addPopupOpened(addPopup) {
   closeViaOverlayOrEscape(addPopup);
 }
 function openPopupProfile() {
-  const form = document.forms.form1;
-  deliteErrorsInput(form);
+  const form = document.forms["form-edit-profile"];
+  deleteInputErrors(form);
   popupNameInput.value = profileTitle.textContent;
   popupJobInput.value = profileSubtitle.textContent;
   addPopupOpened(popupProfileEdit);
 }
 function openAdd() {
-  const form = document.forms.form2;
-  deliteErrorsInput(form);
+  const form = document.forms["form-add-card"];
+  deleteInputErrors(form);
   form.reset();
   addPopupOpened(popupPopupMesto);
 }
 
-function deliteErrorsInput(formElement) {
+function deleteInputErrors(formElement) {
   const errorElements = formElement.querySelectorAll(".popup__error");
   const input = formElement.querySelectorAll("input");
   errorElements.forEach(function (error) {
     error.textContent = "";
   });
   input.forEach(function (input) {
-    input.style.borderBottom = "1px solid #0000002f";
+    input.classList.remove("view-input_invalidate");
   });
 }
 
@@ -134,12 +136,10 @@ function addCloseClickEvent(evt) {
   }
 }
 function closePopupOnEsc(evt) {
-  const escapeEvent = evt.key;
-  if (escapeEvent === "Escape") {
-    const popup = document.querySelectorAll(".popup");
-    popup.forEach(function (popup) {
-      removePopupOpened(popup);
-    });
+  const keyEvent = evt.key;
+  if (keyEvent === "Escape") {
+    const popup = document.querySelector(".popup_opened");
+    removePopupOpened(popup);
   }
 }
 
