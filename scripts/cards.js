@@ -24,3 +24,4 @@ const elementsCardsMassif = [
     link: "https://samokatplus.ru/upload/medialibrary/079/0792ac9f40e20a201277d282fff0e4cc.jpg",
   },
 ];
+export { elementsCardsMassif };
