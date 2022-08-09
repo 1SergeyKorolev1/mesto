@@ -1,7 +1,8 @@
 .element__img {
   width: 100%;
   max-width: 282px;
-  height: 79%;
+  min-height: 285px;
+  height: 285px;
   object-fit: cover;
 }
 @media screen and (max-width: 840px) {

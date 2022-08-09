@@ -36,7 +36,7 @@ function renderCard(nameCard, linkNameCard) {
     nameCard,
     linkNameCard,
     ".elementTemplate",
-    addPopupOpened,
+    openPopup,
     popupPopupImage,
     popupIncreased,
     popupCaption
@@ -50,15 +50,14 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = popupNameInput.value;
   profileSubtitle.textContent = popupJobInput.value;
-  removePopupOpened(popupProfileEdit);
+  closePopup(popupProfileEdit);
 }
 
 // сабмит попапа добавления карточки
 function handleMestoFormSubmit(evt) {
   evt.preventDefault();
   renderCard(popupNameinputMesto.value, popupJobinputMesto.value);
-  removePopupOpened(popupPopupMesto);
-  deactivateButtonMesto();
+  closePopup(popupPopupMesto);
 }
 
 // деактивация сабмита после добавления карточки
@@ -69,36 +68,39 @@ function deactivateButtonMesto() {
 }
 
 // функия закрытия попапов
-function removePopupOpened(removePopup) {
+function closePopup(removePopup) {
   removePopup.classList.remove("popup_opened");
-  removeClickAndKeydownEvent(removePopup);
+  removePopupCloseListeners(removePopup);
 }
 
 // функцция открытия попапов
-function addPopupOpened(addPopup) {
+function openPopup(addPopup) {
   addPopup.classList.add("popup_opened");
-  closeViaOverlayOrEscape(addPopup);
+  addPopupCloseListeners(addPopup);
 }
 
-// функция добавляющая попапу профиля инфу при окрытии + само открытие + валидация + удаляет ошибки
+// функция добавляющая попапу профиля инфу при окрытии + само открытие  + удаляет ошибки
 function openPopupProfile() {
-  const formValidator = new FormValidator(setings);
-  formValidator.enableValidation();
   const form = document.forms["form-edit-profile"];
   deleteInputErrors(form);
   popupNameInput.value = profileTitle.textContent;
   popupJobInput.value = profileSubtitle.textContent;
-  addPopupOpened(popupProfileEdit);
+  openPopup(popupProfileEdit);
 }
 
-// функция резета попапа добавления карточки при окрытии + само открытие + валидация + удаляет ошибки + удаляет стиль ошибки
+// Валидаия форм
+const formValidatorProfile = new FormValidator(setings, ".popup__form_profile");
+formValidatorProfile.enableValidation();
+const formValidatorMesto = new FormValidator(setings, ".popup__form_mesto");
+formValidatorMesto.enableValidation();
+
+// функция резета попапа добавления карточки при окрытии + само открытие + удаляет ошибки + удаляет стиль ошибки + деактивирует сабмит
 function openAdd() {
-  const formValidator = new FormValidator(setings);
-  formValidator.enableValidation();
   const form = document.forms["form-add-card"];
   deleteInputErrors(form);
   form.reset();
-  addPopupOpened(popupPopupMesto);
+  deactivateButtonMesto();
+  openPopup(popupPopupMesto);
 }
 
 // функция удаляет ошибки + удаляет стиль ошибки
@@ -122,7 +124,7 @@ popupFormMesto.addEventListener("submit", handleMestoFormSubmit);
 popupFormProfile.addEventListener("submit", handleProfileFormSubmit);
 
 // функция с листенерами закрытия на Esc по нажатию на клавишу и при клике вне попапа
-function closeViaOverlayOrEscape(popup) {
+function addPopupCloseListeners(popup) {
   document.addEventListener("keydown", closePopupOnEsc);
   popup.addEventListener("click", addCloseClickEvent);
 }
@@ -134,7 +136,7 @@ function addCloseClickEvent(evt) {
     evt.target === popup ||
     evt.target === popup.querySelector(".popup__close")
   ) {
-    removePopupOpened(popup);
+    closePopup(popup);
   }
 }
 
@@ -143,12 +145,12 @@ function closePopupOnEsc(evt) {
   const keyEvent = evt.key;
   if (keyEvent === "Escape") {
     const popup = document.querySelector(".popup_opened");
-    removePopupOpened(popup);
+    closePopup(popup);
   }
 }
 
 // функция удаления слушатилей
-function removeClickAndKeydownEvent(popup) {
+function removePopupCloseListeners(popup) {
   popup.removeEventListener("click", addCloseClickEvent);
   document.removeEventListener("keydown", closePopupOnEsc);
 }

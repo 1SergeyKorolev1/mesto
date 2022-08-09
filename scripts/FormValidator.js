@@ -1,25 +1,26 @@
 export default class {
-  constructor(setings) {
-    this._formSelector = setings.formSelector;
+  constructor(setings, formSelector) {
+    this._formSelector = formSelector;
     this._inputSelector = setings.inputSelector;
     this._submitButtonSelector = setings.submitButtonSelector;
     this._inactiveButtonClass = setings.inactiveButtonClass;
     this._errorClass = setings.errorClass;
+    this._formElement = document.querySelector(this._formSelector);
+    this._inputList = Array.from(
+      this._formElement.querySelectorAll(this._inputSelector)
+    );
+    this._submitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
   }
 
   enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this._formSelector));
-    formList.forEach((formElement) => {
-      this._setEventListeners(formElement);
-    });
+    this._setEventListeners(this._formElement);
   }
 
   _setEventListeners(formElement) {
     this._validateForm(formElement);
-    const inputList = Array.from(
-      formElement.querySelectorAll(this._inputSelector)
-    );
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._hendlerInputForm(formElement, inputElement);
       });
@@ -32,13 +33,12 @@ export default class {
   }
 
   _validateForm(formElement) {
-    const submitButton = formElement.querySelector(this._submitButtonSelector);
     if (formElement.checkValidity()) {
-      submitButton.removeAttribute("disabled", true);
-      submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.removeAttribute("disabled", true);
+      this._submitButton.classList.remove(this._inactiveButtonClass);
     } else {
-      submitButton.setAttribute("disabled", true);
-      submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.setAttribute("disabled", true);
+      this._submitButton.classList.add(this._inactiveButtonClass);
     }
   }
 

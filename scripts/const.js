@@ -20,7 +20,6 @@ const popupNameinputMesto = document.querySelector(".popup__nameinput_mesto");
 const popupJobinputMesto = document.querySelector(".popup__jobinput_mesto");
 const popupFormMesto = document.querySelector(".popup__form_mesto");
 const setings = {
-  formSelector: ".popup__form",
   inputSelector: "input",
   submitButtonSelector: ".popup__submit",
   inactiveButtonClass: "popup__submit_invalid",
