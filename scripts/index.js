@@ -68,15 +68,15 @@ function deactivateButtonMesto() {
 }
 
 // функия закрытия попапов
-function closePopup(removePopup) {
-  removePopup.classList.remove("popup_opened");
-  removePopupCloseListeners(removePopup);
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+  removePopupCloseListeners(popup);
 }
 
 // функцция открытия попапов
-function openPopup(addPopup) {
-  addPopup.classList.add("popup_opened");
-  addPopupCloseListeners(addPopup);
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+  addPopupCloseListeners(popup);
 }
 
 // функция добавляющая попапу профиля инфу при окрытии + само открытие  + удаляет ошибки
