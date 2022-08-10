@@ -43,12 +43,12 @@ export default class {
       .addEventListener("click", this.likeCard);
     this._card
       .querySelector(".element__basket")
-      .addEventListener("click", this.deliteCard);
+      .addEventListener("click", this.deliteCard.bind(this));
   }
   likeCard(evt) {
     evt.target.classList.toggle("element__like_active");
   }
-  deliteCard(evt) {
-    evt.target.closest(".element").remove();
+  deliteCard() {
+    this._card.remove();
   }
 }
