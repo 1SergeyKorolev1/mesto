@@ -12,22 +12,21 @@ export default class {
   }
 
   createNameCard() {
-    this._card = this._cardElement;
     this._elementImage.src = this._link;
     this._elementImage.alt = this._name;
-    this._card.querySelector(".element__title").textContent = this._name;
+    this._cardElement.querySelector(".element__title").textContent = this._name;
     this._addEventListenersCard();
-    return this._card;
+    return this._cardElement;
   }
 
   _addEventListenersCard() {
     this._elementImage.addEventListener("click", () =>
       this._handleCardClick(this._name, this._link)
     );
-    this._card
+    this._cardElement
       .querySelector(".element__like")
       .addEventListener("click", this.likeCard);
-    this._card
+    this._cardElement
       .querySelector(".element__basket")
       .addEventListener("click", this.deliteCard.bind(this));
   }
@@ -35,6 +34,7 @@ export default class {
     evt.target.classList.toggle("element__like_active");
   }
   deliteCard() {
-    this._card.remove();
+    this._cardElement.remove();
+    this._cardElement = null;
   }
 }

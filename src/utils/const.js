@@ -19,13 +19,18 @@ const popupPopupMesto = document.querySelector(".popup_popup_mesto");
 const popupNameinputMesto = document.querySelector(".popup__nameinput_mesto");
 const popupJobinputMesto = document.querySelector(".popup__jobinput_mesto");
 const popupFormMesto = document.querySelector(".popup__form_mesto");
+const formAddCards = document.forms["form-add-card"];
+const formProfile = document.forms["form-edit-profile"];
 const setings = {
   inputSelector: "input",
   submitButtonSelector: ".popup__submit",
   inactiveButtonClass: "popup__submit_invalid",
-  errorClass: "view-input_invalidate",
+  inputErrorClass: "view-input_invalidate",
+  errorClass: ".popup__error",
 };
 export {
+  formAddCards,
+  formProfile,
   profileAddButton,
   popupProfileEdit,
   popupCloseProfile,
