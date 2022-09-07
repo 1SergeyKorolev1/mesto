@@ -31,6 +31,7 @@
           class="profile__avatar"
           title="аватар"
         />
+        <button type="button" class="profile__edit-avatar"></button>
         <div class="profile__info">
           <div class="profile__wrapper">
             <h1 class="profile__title">Энтони Хоук</h1>
@@ -89,6 +90,42 @@
           ></button>
         </div>
       </div>
+      <div class="popup popup_popup_avatar">
+        <div class="popup__overlay">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form name="form-edit-avatar" class="popup__form" novalidate>
+            <input
+              type="url"
+              class="popup__jobinput popup__jobinput_avatar view-input"
+              name="lastname"
+              id="url-input"
+              required
+            />
+            <span class="popup__error" id="url-input-error"></span>
+            <button type="submit" class="popup__submit">Сохранить</button>
+          </form>
+          <button
+            type="button"
+            class="popup__close popup__close_mesto"
+          ></button>
+        </div>
+      </div>
+      <div class="popup popup_popup_delete">
+        <div class="popup__overlay">
+          <h2 class="popup__title">Вы уверены?</h2>
+          <form
+            name="form-delete-card"
+            class="popup__form popup__form_delete"
+            novalidate
+          >
+            <button type="submit" class="popup__submit">Да</button>
+          </form>
+          <button
+            type="button"
+            class="popup__close popup__close_mesto"
+          ></button>
+        </div>
+      </div>
       <div class="popup popup_popup_mesto">
         <div class="popup__overlay">
           <h2 class="popup__title">Новое место</h2>
@@ -135,7 +172,10 @@
         <button type="button" class="element__basket"></button>
         <div class="element__group">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__like"></button>
+          <div class="element__like-group">
+            <button type="button" class="element__like"></button>
+            <p class="element__counter"></p>
+          </div>
         </div>
       </div>
     </template>

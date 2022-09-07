@@ -12,6 +12,7 @@ export default class {
     this._submitButton = this._formElement.querySelector(
       this._submitButtonSelector
     );
+    this._errorElements = this._formElement.querySelectorAll(this._errorClass);
   }
 
   enableValidation() {
@@ -53,8 +54,7 @@ export default class {
   }
 
   deleteInputErrors() {
-    const errorElements = this._formElement.querySelectorAll(this._errorClass);
-    errorElements.forEach(function (error) {
+    this._errorElements.forEach(function (error) {
       error.textContent = "";
     });
     this._inputList.forEach((input) => {

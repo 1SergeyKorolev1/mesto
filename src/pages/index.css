@@ -11,18 +11,22 @@
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__edit-avatar/profile__edit-avatar.css);
 @import url(../blocks/profile/__title/profile__title.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/profile/__wrapper/profile__wrapper.css);
 /* __ */
 @import url(../blocks/elements/elements.css);
+@import url(../blocks/element/__like-group/element__like-group.css);
+@import url(../blocks/element/__counter/element__counter.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__img/element__img.css);
 @import url(../blocks/element/__group/element__group.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__like/element__like.css);
 @import url(../blocks/element/__basket/element__basket.css);
+@import url(../blocks/element/__basket/_disabled/element__basket_disabled.css);
 @import url(../blocks/element/__like/_active/element__like_active.css);
 /* __ */
 @import url(../blocks/footer/footer.css);
@@ -41,6 +45,7 @@
 /* __ */
 @import url(../blocks/popup/_popup/popup_popup_profile.css);
 @import url(../blocks/popup/__form/_profile/popup__form_profile.css);
+@import url(../blocks/popup/__form/_delete/popup__form_delete.css);
 @import url(../blocks/view-input/view-input.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__overlay/popup__overlay.css);
@@ -53,6 +58,10 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__nameinput/popup__nameinput.css);
 @import url(../blocks/popup/__jobinput/popup__jobinput.css);
+/*  */
+@import url(../blocks/popup/_popup/popup_popup_avatar.css);
+@import url(../blocks/popup/__jobinput/_avatar/popup__jobinput_avatar.css);
+@import url(../blocks/popup/_popup/popup_popup_delete.css);
 /* __ */
 @import url(../blocks/view-input/_invalidate/view-input_invalidate.css);
 @import url(../blocks/popup/__error/popup__error.css);
