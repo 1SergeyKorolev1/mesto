@@ -9,11 +9,7 @@ export default class {
       headers: {
         authorization: this._headers.authorization,
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+    }).then(this._getResponseData);
   }
 
   initialCardsData() {
@@ -21,11 +17,7 @@ export default class {
       headers: {
         authorization: this._headers.authorization,
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+    }).then(this._getResponseData);
   }
 
   nameAndJobValues(name, nameJob) {
@@ -39,11 +31,7 @@ export default class {
         name: name,
         about: nameJob,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+    }).then(this._getResponseData);
   }
 
   sendAvatarData(link) {
@@ -56,11 +44,7 @@ export default class {
       body: JSON.stringify({
         avatar: link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+    }).then(this._getResponseData);
   }
 
   sendCardData(name, link) {
@@ -75,11 +59,7 @@ export default class {
         name: name,
         link: link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+    }).then(this._getResponseData);
   }
 
   putingLikes(idCard) {
@@ -88,11 +68,7 @@ export default class {
       headers: {
         authorization: this._headers.authorization,
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+    }).then(this._getResponseData);
   }
 
   deleteLikes(idCard) {
@@ -101,11 +77,7 @@ export default class {
       headers: {
         authorization: this._headers.authorization,
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+    }).then(this._getResponseData);
   }
 
   deleteCard(idCard) {
@@ -114,10 +86,13 @@ export default class {
       headers: {
         authorization: this._headers.authorization,
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+    }).then(this._getResponseData);
+  }
+
+  _getResponseData(res) {
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
   }
 }

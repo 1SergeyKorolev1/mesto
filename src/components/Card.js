@@ -1,5 +1,12 @@
 export default class {
-  constructor(cardSelector, handleCardClick, data, putLike, openDeletCard) {
+  constructor(
+    cardSelector,
+    handleCardClick,
+    data,
+    putLike,
+    openDeletCard,
+    idUser
+  ) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -18,17 +25,18 @@ export default class {
     this._elementBasket = this._cardElement.querySelector(".element__basket");
     this._data = data;
     this._openDeletCard = openDeletCard;
+    this._idUser = idUser;
   }
 
   createNameCard() {
-    //console.log(this._data.owner._id);
+    //console.log(this._idUser);
     this._likeMassiv.forEach((item) => {
-      if (item._id === "7d8820eb264de0b92db322c9") {
+      if (item._id === this._idUser) {
         this._elementLike.classList.toggle("element__like_active");
       }
     });
 
-    if (this._data.owner._id === "7d8820eb264de0b92db322c9") {
+    if (this._data.owner._id === this._idUser) {
       this._elementBasket.classList.remove("element__bascet_disabled");
     } else {
       this._elementBasket.classList.add("element__bascet_disabled");
@@ -57,7 +65,7 @@ export default class {
   }
 
   likeCard(data) {
-    //console.log(data);
+    this._elementLike.classList.toggle("element__like_active");
     this._counter.textContent = data.likes.length;
   }
 
